@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace de.fearvel.io
+namespace de.fearvel.io.File
 {
-    public static class FileTools
+    public static class Encryption
     {
         public static void EncryptFile(string inputFile, string outputFile, string password)
         {
-
             try
             {
                 UnicodeEncoding UE = new UnicodeEncoding();
@@ -68,6 +63,31 @@ namespace de.fearvel.io
                 cs.Close();
                 fsCrypt.Close();
 
+            }
+        }
+        public static MemoryStream DecryptFileToMemory(string inputFile, string password)
+        {
+
+            {
+                UnicodeEncoding UE = new UnicodeEncoding();
+                byte[] key = UE.GetBytes(password);
+
+                FileStream fsCrypt = new FileStream(inputFile, FileMode.Open);
+
+                RijndaelManaged RMCrypto = new RijndaelManaged();
+
+                CryptoStream cs = new CryptoStream(fsCrypt,
+                    RMCrypto.CreateDecryptor(key, key),
+                    CryptoStreamMode.Read);
+
+                MemoryStream mStream = new MemoryStream();
+                int data;
+
+                while ((data = cs.ReadByte()) != -1)
+                    mStream.WriteByte((byte)data);
+                cs.Close();
+                fsCrypt.Close();
+                return mStream;
             }
         }
     }
