@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using de.fearvel.io.DataTypes;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.Advanced;
@@ -14,18 +10,31 @@ using Tesseract;
 
 namespace de.fearvel.io.File
 {
+    /// <summary>
+    /// EXPERIMENTAL
+    /// Ocr Class
+    /// </summary>
     public static class Ocr
     {
-        public static OcrDocument ScanPicturesOfAPdf(string file)
+        /// <summary>
+        /// function to receive Text from a pdf
+        /// </summary>
+        /// <param name="pdf">PDF File</param>
+        /// <returns></returns>
+        public static OcrDocument ScanPicturesOfAPdf(string pdf)
         {
-            return ImageToText(Path.GetFileName(file), PdfPictureExtractor(file));
+            return ImageToText(Path.GetFileName(pdf), PdfPictureExtractor(pdf));
         }
 
-        public static List<Bitmap> PdfPictureExtractor(string file)
+        /// <summary>
+        /// Extracts all pictures of an Pdf
+        /// </summary>
+        /// <param name="pdf">FileLocation of the PDF</param>
+        /// <returns>List of Bitmaps of the PDF</returns>
+        public static List<Bitmap> PdfPictureExtractor(string pdf)
         {
             List<Bitmap> pagePictures = new List<Bitmap>();
-            PdfDocument document = PdfReader.Open(file);
-            int imageCount = 0;
+            PdfDocument document = PdfReader.Open(pdf);
             foreach (PdfPage page in document.Pages)
             {
                 var resources = page.Elements.GetDictionary("/Resources");
@@ -46,16 +55,20 @@ namespace de.fearvel.io.File
                     }
                 }
             }
-
             return pagePictures;
         }
-
+    
+        /// <summary>
+        /// Reads Text from images
+        /// </summary>
+        /// <param name="name">Name of the OCR Document</param>
+        /// <param name="images">List of bitmaps to be read</param>
+        /// <param name="lang">language of the Text within the pictures</param>
+        /// <returns></returns>
         public static OcrDocument ImageToText(string name, List<Bitmap> images, string lang = "deu")
         {
-            OcrDocument ocrDocument = new OcrDocument(name);
-            List<Thread> threads = new List<Thread>();
-            var ocrtext = string.Empty;
-
+            var ocrDocument = new OcrDocument(name);
+            var threads = new List<Thread>();
             for (int i = 0; i < images.Count -1; i++)
             {
                 var thread = new Thread(
@@ -75,8 +88,7 @@ namespace de.fearvel.io.File
                 thread.Start();
                 threads.Add(thread);
             }
-
-            bool running = true;
+            var running = true;
             while (running)
             {
                 running = false;

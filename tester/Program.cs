@@ -16,7 +16,6 @@ namespace tester
     {
         static void Main(string[] args)
         {
-            var path = "testdir";
             var a = new FnPakManager();
             //a.OpenFnPak(@"C:\Users\schreiner.andreas\Code\GitHub\TestPlugin.zip", "plugins");
             Encryption.EncryptFile(@"C:\Users\schreiner.andreas\Code\GitHub\TestPlugin.zip", @"C:\Users\schreiner.andreas\Code\GitHub\TestPlugin.fnPak", "adadwqeq");

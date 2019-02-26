@@ -68,7 +68,7 @@
     <Compile Include="File\Encryption.cs" />
     <Compile Include="DataTypes\FnPak.cs" />
     <Compile Include="File\Ocr.cs" />
-    <Compile Include="FnPak\FnPakDiscriptor.cs" />
+    <Compile Include="FnPak\FnPakDescriptor.cs" />
     <Compile Include="FnPak\FnPakManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="File\Barcode.cs" />
