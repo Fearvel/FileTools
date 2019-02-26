@@ -13,6 +13,7 @@ namespace de.fearvel.io.File
     /// <summary>
     /// EXPERIMENTAL
     /// Ocr Class
+    /// <copyright>Andreas Schreiner 2019</copyright>
     /// </summary>
     public static class Ocr
     {

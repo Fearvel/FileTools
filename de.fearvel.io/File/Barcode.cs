@@ -8,6 +8,7 @@ namespace de.fearvel.io.File
 {
     /// <summary>
     /// Static class to easily create a Barcode
+    /// <copyright>Andreas Schreiner 2019</copyright>
     /// </summary>
     public static class Barcode
     {

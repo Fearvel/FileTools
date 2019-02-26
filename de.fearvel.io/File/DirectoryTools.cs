@@ -4,6 +4,7 @@ namespace de.fearvel.io.File
 {
     /// <summary>
     /// Static class for custom functions and methods for Directory operations
+    /// <copyright>Andreas Schreiner 2019</copyright>
     /// </summary>
     public static class DirectoryTools
     {

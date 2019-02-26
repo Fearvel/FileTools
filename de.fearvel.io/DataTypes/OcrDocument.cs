@@ -9,6 +9,7 @@ namespace de.fearvel.io.DataTypes
     /// <summary>
     /// EXPERIMENTAL
     /// Wrapper to combine the name and the content of the read PDF
+    /// <copyright>Andreas Schreiner 2019</copyright>
     /// </summary>
     public class OcrDocument
     {

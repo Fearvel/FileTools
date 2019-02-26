@@ -7,6 +7,7 @@ namespace de.fearvel.io.File
 
     /// <summary>
     /// Class for Encrypting or Decrypting files
+    /// <copyright>Andreas Schreiner 2019</copyright>
     /// </summary>
     public static class Encryption
     {

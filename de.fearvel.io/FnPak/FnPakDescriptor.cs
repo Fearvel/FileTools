@@ -8,6 +8,7 @@ namespace de.fearvel.io.FnPak
     /// EXPERIMENTAL
     /// Part of an Proprietary Encrypted file format
     /// for loading plugins
+    /// <copyright>Andreas Schreiner 2019</copyright>
     /// </summary>
     public class FnPakDescriptor
     {
